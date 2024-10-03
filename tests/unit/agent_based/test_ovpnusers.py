@@ -29,6 +29,7 @@ from cmk.agent_based.v2 import (
 )
 from cmk.base.plugins.agent_based import openvpn
 
+
 @pytest.mark.parametrize('section, result', [
     ([['{'], ['"n_clients": 0,'], ['"ovpn_dco_available": false,'], ['"ovpn_dco_ver": "Kernel module not loaded"'], ['}']], 0),
     ([['{'], ['"n_clients": 24,'], ['"ovpn_dco_available": false,'], ['"ovpn_dco_ver": "Kernel module not loaded"'], ['}']], 24),

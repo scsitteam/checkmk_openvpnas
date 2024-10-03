@@ -63,7 +63,7 @@ def parse_ovpnlicense(string_table):
 
 def discover_ovpnlicense(section):
     if section is not None:
-        yield Service()        
+        yield Service()
 
 
 def check_ovpnlicense(params, section):
