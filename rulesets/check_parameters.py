@@ -19,11 +19,9 @@
 
 from cmk.rulesets.v1 import Title
 from cmk.rulesets.v1.form_specs import (
-    DataSize,
     DefaultValue,
     DictElement,
     Dictionary,
-    IECMagnitude,
     InputHint,
     Integer,
     LevelDirection,

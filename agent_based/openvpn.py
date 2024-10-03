@@ -22,12 +22,9 @@
 import json
 
 from cmk.agent_based.v2 import (
-    AgentSection, 
-    CheckPlugin, 
-    Service, 
-    Result, 
-    State, 
-    Metric, 
+    AgentSection,
+    CheckPlugin,
+    Service,
     check_levels
 )
 
@@ -60,7 +57,7 @@ def parse_ovpnlicense(string_table):
     if string_table:
         flatten_string_table = ["".join(item) for item in string_table]
         json_str = json.loads("".join(flatten_string_table))
-        return(json_str)
+        return (json_str)
     return []
 
 
