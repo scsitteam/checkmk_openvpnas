@@ -1,0 +1,5 @@
+#!/bin/sh
+echo '<<<ovpn_users:sep(0)>>>'
+sacli VPNsummary
+echo '<<<ovpn_licusage:sep(0)>>>'
+sacli LicUsage

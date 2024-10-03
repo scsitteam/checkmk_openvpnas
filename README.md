@@ -1,4 +1,4 @@
-# Checkmk extension for ...
+# Checkmk extension for OpenVPN Access Server
 
 ![build](https://github.com/jiuka/checkmk_template/workflows/build/badge.svg)
 ![flake8](https://github.com/jiuka/checkmk_template/workflows/Lint/badge.svg)
@@ -6,7 +6,7 @@
 
 ## Description
 
-This is a template to develop Checkmk Extensions
+Checks [OpenVPN Access Server](https://openvpn.net/access-server/) status.
 
 ## Development
 
