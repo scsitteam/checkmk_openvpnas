@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8; py-indent-offset: 4 -*-
 #
-# Checks based on the Phion-MIB for the Barracuda CloudGen Firewall.
+# Checks for the OpenVPN Access Server.
 #
 # Copyright (C) 2024 Lamberto Grippi <lamberto.grippi@scs.ch>
 #
