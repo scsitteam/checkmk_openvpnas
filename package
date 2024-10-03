@@ -3,7 +3,7 @@
     'description': u'OpenVPN Access Server Checks',
     'download_url': 'https://github.com/scsitteam/checkmk_openvpnas',
     'files': {
-        'agents': ['plugins/opnvpnas'],
+        'agents': ['plugins/openvpnas'],
         'cmk_addons_plugins': [
             'openvpnas/agent_based/openvpn.py',
             'openvpnas/graphing/openvpn.py',
