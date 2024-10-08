@@ -35,7 +35,7 @@ from cmk.base.plugins.agent_based import openvpn
     ([['{'], ['"n_clients": 24,'], ['"ovpn_dco_available": false,'], ['"ovpn_dco_ver": "Kernel module not loaded"'], ['}']], 24),
 ])
 def test_parse_ovpnusers(section, result):
-    assert openvpn.parse_ovpnusers(section) == result
+    assert openvpn.parse_ovpnusers(section)["n_clients"] == result
 
 
 @pytest.mark.parametrize('section, result', [
@@ -49,7 +49,7 @@ def test_discover_ovpnusers(section, result):
 @pytest.mark.parametrize('params, section, result', [
     (
         {},
-        24,
+        {"n_clients": 24},
         [
             Result(state=State.OK, summary='VPN Users: 24'),
             Metric('users', 24.0)
@@ -57,7 +57,7 @@ def test_discover_ovpnusers(section, result):
     ),
     (
         {},
-        0,
+        {"n_clients": 0},
         [
             Result(state=State.OK, summary='VPN Users: 0'),
             Metric('users', 0.0)
@@ -65,7 +65,7 @@ def test_discover_ovpnusers(section, result):
     ),
     (
         {'users': ('fixed', (30, 40))},
-        24,
+        {"n_clients": 24},
         [
             Result(state=State.OK, summary='VPN Users: 24'),
             Metric('users', 24.0, levels=(30.0, 40.0))
@@ -73,7 +73,7 @@ def test_discover_ovpnusers(section, result):
     ),
     (
         {'users': ('fixed', (10, 40))},
-        24,
+        {"n_clients": 24},
         [
             Result(state=State.WARN, summary='VPN Users: 24 (warn/crit at 10/40)'),
             Metric('users', 24.0, levels=(10.0, 40.0))
@@ -81,7 +81,7 @@ def test_discover_ovpnusers(section, result):
     ),
     (
         {'users': ('fixed', (10, 20))},
-        24,
+        {"n_clients": 24},
         [
             Result(state=State.CRIT, summary='VPN Users: 24 (warn/crit at 10/20)'),
             Metric('users', 24.0, levels=(10.0, 20.0))
