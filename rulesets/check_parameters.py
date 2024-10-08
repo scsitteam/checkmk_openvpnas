@@ -73,17 +73,6 @@ def _parameter_form_ovpnlicusage():
                 ),
                 required=False,
             ),
-            "total_lic": DictElement(
-                parameter_form=SimpleLevels(
-                    title=Title("Levels for used number of OpenVPN Licenses"),
-                    level_direction=LevelDirection.UPPER,
-                    form_spec_template=Integer(),
-                    migrate=migrate_to_integer_simple_levels,
-                    prefill_levels_type=DefaultValue(LevelsType.NONE),
-                    prefill_fixed_levels=InputHint(value=(0, 0)),
-                ),
-                required=False,
-            ),
         }
     )
 

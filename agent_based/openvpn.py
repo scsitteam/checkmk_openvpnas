@@ -79,7 +79,6 @@ def check_ovpnlicense(params, section):
 
         yield from check_levels(
             section[1],
-            levels_upper=params.get("total_lic", None),
             label="Total licenses",
             metric_name="total",
             render_func=lambda v: "%d" % v
