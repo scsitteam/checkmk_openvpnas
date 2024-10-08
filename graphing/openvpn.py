@@ -72,21 +72,33 @@ metric_ovplicense_total = metrics.Metric(
 
 graph_licenses = graphs.Graph(
     name="ovpn_licenses",
-    title=graphs.Title('Licenses'),
+    title=graphs.Title("Licenses"),
     compound_lines=["ovpn_used_license"],
-    simple_lines=["ovpn_total_license"],
+    simple_lines=[metrics.Product(
+        title=metrics.Title("Total OpenVPN Licenses"),
+        color=metrics.Color.GRAY,
+        unit=metrics.Unit(metrics.DecimalNotation(""), metrics.StrictPrecision(0)),
+        factors=[
+            "ovpn_total_license",
+            metrics.Constant(
+                title=metrics.Title(""),
+                color=metrics.Color.GRAY,
+                unit=metrics.Unit(metrics.DecimalNotation(""), metrics.StrictPrecision(0)),
+                value=1,),
+        ],
+    ),],
 )
 
-perfometer_ovplicense = perfometers.Stacked(
+perfometer_ovplicense = perfometers.Perfometer(
     name="ovpn_licusage",
-    upper=perfometers.Perfometer(
-        name="ovpn_total_license",
-        focus_range=perfometers.FocusRange(perfometers.Closed(0), perfometers.Open(10)),
-        segments=["ovpn_total_license"],
+    focus_range=perfometers.FocusRange(
+        perfometers.Closed(0),
+        perfometers.Closed(
+            metrics.MaximumOf(
+                "ovpn_used_license",
+                metrics.Color.GRAY,
+            )
+        ),
     ),
-    lower=perfometers.Perfometer(
-        name="ovpn_used_license",
-        focus_range=perfometers.FocusRange(perfometers.Closed(0), perfometers.Open(10)),
-        segments=["ovpn_used_license"],
-    ),
+    segments=["ovpn_used_license"],
 )
