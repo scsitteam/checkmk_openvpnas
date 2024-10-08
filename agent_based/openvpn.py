@@ -33,7 +33,7 @@ def parse_ovpnusers(string_table):
     if string_table:
         flatten_string_table = ["".join(item) for item in string_table]
         json_str = json.loads("".join(flatten_string_table))
-        return json_str["n_clients"]
+        return json_str
     return {}
 
 
@@ -45,7 +45,7 @@ def discover_ovpnusers(section):
 def check_ovpnusers(params, section):
     if section is not None:
         yield from check_levels(
-            section,
+            section["n_clients"],
             levels_upper=params.get("users", None),
             label="VPN Users",
             metric_name="users",
@@ -73,7 +73,8 @@ def check_ovpnlicense(params, section):
             levels_upper=params.get("used_lic", None),
             label="Used licenses",
             metric_name="used",
-            render_func=lambda v: "%d" % v
+            render_func=lambda v: "%d" % v,
+            boundaries=(0, section[1])
         )
 
         yield from check_levels(
