@@ -27,7 +27,7 @@ from cmk.agent_based.v2 import (
     Service,
     State,
 )
-from cmk.base.plugins.agent_based import openvpn
+from cmk_addons.plugins.openvpnas.agent_based import openvpn
 
 
 @pytest.mark.parametrize('section, result', [
